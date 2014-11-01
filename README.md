@@ -22,9 +22,9 @@ get.muzik simply takes a youtube playlist ID and turns it's contents into mp3 fi
 
 ./get.muzik [-h | --help | -d | -c | -o TARGET_MP3_FOLDER ] PLAYLIST_ID
 
--h : get help
--c : only convert files present in ./m4a/ (for example after a -d)
--d : only download raw m4a sound data in ./m4a/
--o TARGET_MP3_FOLDER : provide a target folder for the processed MP3 files
+* -h : get help
+* -c : only convert files present in ./m4a/ (for example after a -d)
+* -d : only download raw m4a sound data in ./m4a/
+* -o TARGET_MP3_FOLDER : provide a target folder for the processed MP3 files
 
 By default, get.muzik will put the processed MP3 files in ./mp3/
