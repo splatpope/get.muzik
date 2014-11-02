@@ -9,9 +9,9 @@ INSTALLING :
 The INSTALL.sh script will only do you any good if you're using a debian based system.
 
 If you are using another distro, then just make sure you have installed the following components :
-youtube-dl (available on github)
-ffmpeg 
-lame
+* youtube-dl (available on github)
+* ffmpeg 
+* lame
 
 Then, make the directory mp3/ inside the repo's root.
 
