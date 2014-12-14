@@ -108,10 +108,10 @@ if [[ $convert = "true" ]]; then
 		echo "[extraction] Extracting raw WAV info from $files ..."
 		echo
 		noext=${files##*/}
-		ffmpeg -loglevel panic -i $files -f wav $WAV_DIR/$noext #>/dev/null 2>&1
+		avconv -i $files $WAV_DIR/${noext%.m4a}.wav #>/dev/null 2>&1
 		echo
 		echo "[encoding] Encoding raw WAV of $files into final MP3 with VBR ..."
-		lame -V2 $WAV_DIR/$noext ${MP3_DIR}/${noext%.m4a}.mp3 #>/dev/null 2>&1
+		lame -V2 $WAV_DIR/${noext%.m4a}.wav ${MP3_DIR}/${noext%.m4a}.mp3 #>/dev/null 2>&1
 		echo
 		echo "[notice] MP3 conversion for $files finished."
 		echo

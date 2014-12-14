@@ -3,7 +3,7 @@ get.muzik
 
 Grabs a youtube playlist's music and converts it to MP3.
 
-Sadly, youtube-dl alone will only give you m4a files, which are not suitable for playback on some players and most external devices. It has a built in conversion feature, but it does not support MP3 and produces faulty files. This script acts as a workaround and feeds the m4a files to ffmpeg, and then to lame.
+Sadly, youtube-dl alone will only give you m4a files, which are not suitable for playback on some players and most external devices. It has a built in conversion feature, but it does not support MP3 and produces faulty files. This script acts as a workaround and feeds the m4a files to avconv, and then to lame.
 
 The conversion to wav, which happens midway, may not be necessary and will probably be tweaked in a future release.
 
@@ -14,7 +14,7 @@ The INSTALL.sh script will only do you any good if you're using a debian based s
 
 If you are using another distro, then just make sure you have installed the following components :
 * youtube-dl (available on github)
-* ffmpeg 
+* avconv
 * lame
 
 Then, make the directory mp3/ inside the repo's root.

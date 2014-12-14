@@ -3,7 +3,7 @@
 
 
 has_youtubedl=$(which youtube-dl)
-has_ffmpeg=$(which ffmpeg)
+has_avconv=$(which avconv)
 has_lame=$(which lame)
 
 if [[ $USER != "root" ]]; then
@@ -19,11 +19,11 @@ else
 	echo "[notice] youtube-dl detected. Carrying on..."
 fi
 
-if [[ -z $has_ffmpeg ]]; then
-	echo "[notice] You do not have ffmpeg. Installing it..."
-	apt-get install ffmpeg
+if [[ -z $has_avconv ]]; then
+	echo "[notice] You do not have avconv. Installing it..."
+	apt-get install libav-tools
 else
-	echo "[notice] ffmpeg detected. Carrying on..."
+	echo "[notice] avconv detected. Carrying on..."
 fi
 
 if [[ -z $has_lame ]]; then
@@ -35,6 +35,7 @@ fi
 
 if [[ ! -d ./mp3/ ]]; then
 	mkdir ./mp3/
+	chmod a+rw ./mp3/
 	echo "[notice] ./mp3/ folder created. get.muzik will put processed mp3 files here by default."
 fi
 
