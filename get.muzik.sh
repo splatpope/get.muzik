@@ -70,6 +70,8 @@ done
 shift $((OPTIND-1))
 
 PLAYLIST_ID=$1
+PLAYLIST_TITLE="$(youtube-dl --get-filename --playlist-end 1 -o '%(playlist_title)s' $PLAYLIST_ID)"
+
 
 if [[ -z $PLAYLIST_ID ]]; then
 	echo "[error] You need to provide a playlist ID."
@@ -93,11 +95,15 @@ if [[ ! -d $MP3_DIR ]]; then
 		esac
     done
 fi
+mkdir $MP3_DIR/$PLAYLIST_TITLE 2>/dev/null
+echo "Created ${MP3_DIR}/${PLAYLIST_TITLE}"
+
 echo
 echo "[notice] Downloading raw m4a sound files from the playlist..."
 sleep 1s
 echo
 if [[ $download = "true" ]]; then
+
 	cd $RAW_DIR
 	youtube-dl -x $PLAYLIST_ID
 	cd ..
@@ -111,7 +117,7 @@ if [[ $convert = "true" ]]; then
 		avconv -i $files $WAV_DIR/${noext%.m4a}.wav #>/dev/null 2>&1
 		echo
 		echo "[encoding] Encoding raw WAV of $files into final MP3 with VBR ..."
-		lame -V2 $WAV_DIR/${noext%.m4a}.wav ${MP3_DIR}/${noext%.m4a}.mp3 #>/dev/null 2>&1
+		lame -V2 $WAV_DIR/${noext%.m4a}.wav ${MP3_DIR}/${PLAYLIST_TITLE}/${noext%.m4a}.mp3 #>/dev/null 2>&1
 		echo
 		echo "[notice] MP3 conversion for $files finished."
 		echo
